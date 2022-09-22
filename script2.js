@@ -14,11 +14,13 @@ let i=0;
 do{
     console.log(i);
     i++;
-}while(i<3);*/
+}while(i<3);
 
 for(let i=0;i<3;i++){
     console.log(i);
     document.write("<br>Hello</br>")
 }
 i=2;
-console.log(i);
+console.log(i);*/
+
+let p=prompt("ADj meg egy számot! ", "")
