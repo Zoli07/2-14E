@@ -1,27 +1,21 @@
-let value=true;
-console.log(typeof value);
-value=String(value);
-console.log(typeof value);
-console.log("6"/"2");
+document.getElementById("fetch-posts").onclick=function(){
+    var xhr=new XMLHttpRequest;
 
-let str="123";
-console.log(typeof str);
-let num=Number(str);
-console.log(typeof num);
-num=num+ 1.2 ;
-console.log(num);
-console.log(typeof num);
 
-let age=Number("tizennyolc");
-console.log(age);
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState ===4 && xhr.status ===200){
+            var posts=JSON.parse(xhr.responseText);
 
-console.log(Number(1));
-console.log(Number("szam"));
-console.log(Number(true));
-console.log(Number(false));
+            var postlistHTML='';
+            for(var post of posts){
+                postlistHTML+='<p>'+post.title+'</p><small>'+post.body+'</small>';
+            }
 
-console.log(Boolean(1));
-console.log(Boolean(0));
-console.log(Boolean("Hello"));
-console.log(Boolean(""));
-console.log(Boolean(" "));
+            document.getElementById('post-list-container').innerHTML=postlistHTML;
+        }
+    }
+
+    xhr.open('GET','http://jsonplaceholder.typicode.com/posts');
+
+    xhr.send();
+}
